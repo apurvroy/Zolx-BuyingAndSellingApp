@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "45835859002",
+    "project_id": "zolx-9ef76",
+    "storage_bucket": "zolx-9ef76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45835859002:android:0fbb1f562a71bdebdd3103",
+        "android_client_info": {
+          "package_name": "com.example.zolx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45835859002-4j1b9fv9jl5koi8jfnaq3ks0ivrmsi6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWA36jwSkk9RKCBZ7d8zyeVBknUY9r4t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45835859002-4j1b9fv9jl5koi8jfnaq3ks0ivrmsi6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

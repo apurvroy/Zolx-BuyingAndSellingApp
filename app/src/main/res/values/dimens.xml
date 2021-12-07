@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_marginTop">20dp</dimen>
+    <dimen name="splash_appName_textSize">25sp</dimen>
+    <dimen name="app_icon_height">60dp</dimen>
+    <dimen name="app_icon_width">60dp</dimen>
+    <dimen name="title_text">25sp</dimen>
+    <dimen name="btn_padd_bottom">12dp</dimen>
+    <dimen name="btn_padd_top">12dp</dimen>
+    <dimen name="clickable_padding">12dp</dimen>
+    <dimen name="clickable_text_size">14sp</dimen>
+    <dimen name="btn_text_size">22sp</dimen>
+    <dimen name="et_padding">10dp</dimen>
+    <dimen name="et_margin_start">20dp</dimen>
+    <dimen name="et_margin_end">20dp</dimen>
+    <dimen name="btn_margin_start">20dp</dimen>
+    <dimen name="btn_margin_end">20dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+</resources>
