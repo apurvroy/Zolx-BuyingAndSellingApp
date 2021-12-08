@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.tvRegister.setOnClickListener {
+        binding.btnRegister.setOnClickListener {
             val intent= Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
@@ -55,25 +55,27 @@ class LoginActivity : AppCompatActivity() {
 
     //validation and verification
     private fun checkLoginDetails():Boolean {
+        var flag=true
         if(binding.emailLogin.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the Email!", Toast.LENGTH_SHORT).show()
-            binding.emailLogin.error = "Enter the Email!"
-            binding.emailLogin.requestFocus()
+            binding.tilEmailLogin.error = "Enter the Email"
+            flag=false
 
-            return false
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.emailLogin.text.toString().trim()).matches()) {
 //            Toast.makeText(this, "Enter the correct Email", Toast.LENGTH_SHORT).show()
-            binding.emailLogin.error = "Enter the correct Email!"
-            binding.emailLogin.requestFocus()
-            return false
-        }else if(binding.passwordLogin.text.toString().trim().isEmpty()){
-//            Toast.makeText(this,"Enter the Password!",Toast.LENGTH_SHORT).show()
-            binding.passwordLogin.error = "Enter the password!"
-            binding.passwordLogin.requestFocus()
-            return false
-        } else{
-            return true
+            binding.tilEmailLogin.error = "Enter the correct Email"
+            flag= false
+        }else{
+            binding.tilEmailLogin.error=null
         }
+        if(binding.passwordLogin.text.toString().trim().isEmpty()){
+//            Toast.makeText(this,"Enter the Password!",Toast.LENGTH_SHORT).show()
+            binding.tilPasswordLogin.error = "Enter the password"
+            flag= false
+        }else{
+            binding.tilPasswordLogin.error=null
+        }
+        return flag
     }
     private fun logInUser(){
         if(checkLoginDetails()){

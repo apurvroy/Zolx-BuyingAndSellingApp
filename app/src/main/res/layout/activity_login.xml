@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activities.LoginActivity"
-    android:background="@color/white">
+    >
 
     <FrameLayout
         android:id="@+id/header_img"
@@ -40,54 +40,117 @@
         android:layout_marginTop="30dp"
         android:text="@string/login"
         android:textStyle="bold"
-        android:textColor="@color/black"
         android:textSize="@dimen/title_text">
     </TextView>
-    <EditText
-        android:id="@+id/email_login"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email_login"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/et_margin_start"
         android:layout_marginEnd="@dimen/et_margin_end"
         android:layout_marginTop="20dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/email"
+        app:errorEnabled="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_text"
-        android:background="@drawable/et_style"
-        android:padding="@dimen/et_padding"
-        android:drawableStart="@drawable/email_icon_style"
-        android:drawablePadding="10dp">
+        app:startIconDrawable="@drawable/email_icon_style"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+<!--    <EditText-->
+<!--        android:id="@+id/email_login"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginStart="@dimen/et_margin_start"-->
+<!--        android:layout_marginEnd="@dimen/et_margin_end"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:hint="@string/email"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/login_text"-->
+<!--        android:background="@drawable/et_style"-->
+<!--        android:padding="@dimen/et_padding"-->
+<!--        android:drawableStart="@drawable/email_icon_style"-->
+<!--        android:drawablePadding="10dp">-->
 
-    </EditText>
-    <EditText
-        android:id="@+id/password_login"
+<!--    </EditText>-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password_login"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:inputType="textPassword"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/et_margin_start"
         android:layout_marginEnd="@dimen/et_margin_end"
         android:layout_marginTop="20dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:errorEnabled="true"
         android:hint="@string/password"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_login"
-        android:background="@drawable/et_style"
-        android:padding="@dimen/et_padding"
-        android:drawableStart="@drawable/lock_icon_style"
-        android:drawablePadding="10dp">
-    </EditText>
-    <TextView
+        app:layout_constraintTop_toBottomOf="@+id/til_email_login"
+        app:startIconDrawable="@drawable/lock_icon_style"
+        app:endIconMode="password_toggle"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+<!--    <EditText-->
+<!--        android:id="@+id/password_login"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:layout_marginStart="@dimen/et_margin_start"-->
+<!--        android:layout_marginEnd="@dimen/et_margin_end"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:hint="@string/password"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/til_email_login"-->
+<!--        android:background="@drawable/et_style"-->
+<!--        android:padding="@dimen/et_padding"-->
+<!--        android:drawableStart="@drawable/lock_icon_style"-->
+<!--        android:drawablePadding="10dp">-->
+<!--    </EditText>-->
+    <Button
         android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/password_login"
+        app:layout_constraintTop_toBottomOf="@+id/til_password_login"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="20dp"
         android:text="@string/forgot_password"
         android:textSize="@dimen/clickable_text_size"
         android:layout_marginTop="15dp"
         android:padding="@dimen/clickable_padding"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         >
-    </TextView>
+    </Button>
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btn_login"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/forgot_password"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"-->
+<!--        android:text="@string/btn_text_login"-->
+<!--        android:textSize="@dimen/btn_text_size"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:paddingBottom="@dimen/btn_padd_bottom"-->
+<!--        android:paddingTop="@dimen/btn_padd_top"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginStart="@dimen/btn_margin_start"-->
+<!--        android:layout_marginEnd="@dimen/btn_margin_end"-->
+<!--        android:backgroundTint="@color/cyan"-->
+<!--        >-->
+
+<!--    </com.google.android.material.button.MaterialButton>-->
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
@@ -96,7 +159,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgot_password"
         android:layout_marginTop="30dp"
-        android:text="@string/btn_text_login"
+        android:text="@string/btn_sign_in"
         android:textSize="@dimen/btn_text_size"
         android:textColor="@color/white"
         android:paddingBottom="@dimen/btn_padd_bottom"
@@ -104,10 +167,8 @@
         android:gravity="center"
         android:layout_marginStart="@dimen/btn_margin_start"
         android:layout_marginEnd="@dimen/btn_margin_end"
-        android:backgroundTint="@color/cyan"
-        android:background="@drawable/et_style"
-        >
-    </Button>
+        style="@style/Widget.MaterialComponents.Button"
+        />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,20 +182,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/don_t_have_an_account"
+            android:textColor="@color/icon_grey"
             android:textSize="@dimen/clickable_text_size"
             android:padding="@dimen/clickable_padding"
             >
         </TextView>
-        <TextView
-            android:id="@+id/tv_register"
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/btn_register"
             android:text="@string/register"
             android:textSize="@dimen/clickable_text_size"
             android:padding="@dimen/clickable_padding"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             >
-        </TextView>
+        </Button>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_register"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/register"-->
+<!--            android:textSize="@dimen/clickable_text_size"-->
+<!--            android:padding="@dimen/clickable_padding"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"-->
+<!--            >-->
+<!--        </TextView>-->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

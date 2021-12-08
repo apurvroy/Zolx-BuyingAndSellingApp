@@ -27,10 +27,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private fun changePassword() {
         val email=binding.fpEmail.text.toString().trim()
         if(binding.fpEmail.text.toString().trim().isEmpty()){
-            Toast.makeText(this, "Enter the Email", Toast.LENGTH_LONG).show()
+            binding.tilFpEmail.error="Enter the Email"
         }
         else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.fpEmail.text.toString().trim()).matches()) {
-            Toast.makeText(this, "Enter the correct Email", Toast.LENGTH_LONG).show()
+            binding.tilFpEmail.error="Enter the correct Email"
         }
         else{
             FirebaseAuth.getInstance().sendPasswordResetEmail(email)
