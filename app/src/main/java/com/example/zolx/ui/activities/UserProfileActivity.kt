@@ -235,53 +235,61 @@ class UserProfileActivity : AppCompatActivity() {
 
     }
     private fun checkUserProfileDetails():Boolean{
+        var flag=true
         val mobile=binding.mobileNumberProfile.text.toString().trim().toLongOrNull()
         if(binding.firstNameProfile.text.toString().trim().isEmpty()){
 //            Toast.makeText(this,"Please enter your first name!",Toast.LENGTH_LONG).show()
-            binding.firstNameProfile.error="Please enter your first name!"
-            binding.firstNameProfile.requestFocus()
-            return false
+            binding.tilFirstNameProfile.error="Please enter your first name!"
+//            binding.firstNameProfile.requestFocus()
+            flag= false
+        }else{
+            binding.tilFirstNameProfile.error=null
         }
-        else if(binding.lastNameProfile.text.toString().trim().isEmpty()){
+        if(binding.lastNameProfile.text.toString().trim().isEmpty()){
 //            Toast.makeText(this,"Please enter your last name!",Toast.LENGTH_LONG).show()
-            binding.lastNameProfile.error="Please enter your last name!"
-            binding.lastNameProfile.requestFocus()
-            return false
+            binding.tilLastNameProfile.error="Please enter your last name!"
+//            binding.lastNameProfile.requestFocus()
+            flag= false
+        }else{
+            binding.tilLastNameProfile.error=null
         }
-        else if(binding.mobileNumberProfile.text.toString().trim().isEmpty()){
+        if(binding.mobileNumberProfile.text.toString().trim().isEmpty()){
 //            Toast.makeText(this,"Please enter your mobile number!",Toast.LENGTH_LONG).show()
-            binding.mobileNumberProfile.error="Please enter your mobile number!"
-            binding.mobileNumberProfile.requestFocus()
-            return false
+            binding.tilMobileNumberProfile.error="Please enter your mobile number!"
+//            binding.mobileNumberProfile.requestFocus()
+            flag= false
         }else if(mobile==null){
 //            Toast.makeText(this, "Enter the valid mobile numbers(Only Digits)", Toast.LENGTH_LONG).show()
-            binding.mobileNumberProfile.error="Enter the valid mobile numbers(Only Digits)"
-            binding.mobileNumberProfile.requestFocus()
-            return false
+            binding.tilMobileNumberProfile.error="Enter the valid mobile numbers(Only Digits)"
+//            binding.mobileNumberProfile.requestFocus()
+            flag= false
         }
         else if(mobile<0){
 //            Toast.makeText(this, "mobile number can not be negative", Toast.LENGTH_LONG).show()
-            binding.mobileNumberProfile.error="mobile number can not be negative"
-            binding.mobileNumberProfile.requestFocus()
-            return false
+            binding.tilMobileNumberProfile.error="mobile number can not be negative"
+//            binding.mobileNumberProfile.requestFocus()
+            flag= false
         }
         else if(binding.mobileNumberProfile.text.toString().trim().length !in 10 downTo 5){
 //            Toast.makeText(this,"Please Enter a ten digit valid number!",Toast.LENGTH_LONG).show()
-            binding.mobileNumberProfile.error="It should be at least 6 digits and at max 10 digits"
-            binding.mobileNumberProfile.requestFocus()
-            return false
-        }else if(binding.addressProfile.text.toString().trim().isEmpty()){
+            binding.tilMobileNumberProfile.error="It should be at least 6 digits and at max 10 digits"
+//            binding.mobileNumberProfile.requestFocus()
+            flag= false
+        }else{
+            binding.tilMobileNumberProfile.error=null
+        }
+        if(binding.addressProfile.text.toString().trim().isEmpty()){
 //            Toast.makeText(this,"Please enter your address!",Toast.LENGTH_LONG).show()
-            binding.addressProfile.error="Please enter your address!"
-            binding.addressProfile.requestFocus()
-            return false
+            binding.tilAddressProfile.error="Please enter your address!"
+//            binding.addressProfile.requestFocus()
+            flag= false
         }
 //        else if(binding.dobProfile.text.toString().isEmpty()){
 //            binding.dobProfile.error="Please enter your DOB!"
 //            binding.dobProfile.requestFocus()
 //            return false
 //        }
-        return true
+        return flag
     }
     fun userProfileUpdateDone(){
         Toast.makeText(this,"your profile is updated successfully",Toast.LENGTH_SHORT).show()

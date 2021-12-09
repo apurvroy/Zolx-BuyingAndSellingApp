@@ -67,72 +67,155 @@
 
                     />
             </FrameLayout>
-            <EditText
-                android:id="@+id/product_name"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginStart="@dimen/et_margin_start"
-                android:layout_marginEnd="@dimen/et_margin_start"
-                android:layout_marginTop="20dp"
-                android:hint="@string/product_name"
-                android:background="@drawable/et_style"
-                android:padding="@dimen/et_padding"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fl_product_image"
-                >
-            </EditText>
-            <EditText
-                android:id="@+id/product_price"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:inputType="number"
-                android:layout_marginStart="@dimen/et_margin_start"
-                android:layout_marginEnd="@dimen/et_margin_start"
-                android:layout_marginTop="20dp"
-                android:hint="@string/price"
-                android:background="@drawable/et_style"
-                android:padding="@dimen/et_padding"
-                android:drawableStart="@drawable/rupee_icon_style"
-                android:drawablePadding="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_name"
-                >
-            </EditText>
-            <EditText
-                android:id="@+id/product_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:inputType="number"
-                android:layout_marginStart="@dimen/et_margin_start"
-                android:layout_marginEnd="@dimen/et_margin_start"
-                android:layout_marginTop="20dp"
-                android:hint="@string/quantity"
-                android:background="@drawable/et_style"
-                android:padding="@dimen/et_padding"
-                android:drawableStart="@drawable/number_icon_style"
-                android:drawablePadding="10dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_price"
-                >
-            </EditText>
-            <EditText
-                android:id="@+id/product_details"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/et_margin_start"
                 android:layout_marginEnd="@dimen/et_margin_start"
                 android:layout_marginTop="20dp"
-                android:hint="@string/product_details"
-                android:padding="@dimen/et_padding"
-                android:minHeight="100dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/product_name"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_baseline_label_important_24"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/product_quantity"
-                >
-            </EditText>
+                app:layout_constraintTop_toBottomOf="@id/fl_product_image">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/product_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+<!--            <EditText-->
+<!--                android:id="@+id/product_name"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:layout_marginStart="@dimen/et_margin_start"-->
+<!--                android:layout_marginEnd="@dimen/et_margin_start"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:hint="@string/product_name"-->
+<!--                android:background="@drawable/et_style"-->
+<!--                android:padding="@dimen/et_padding"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/fl_product_image"-->
+<!--                >-->
+<!--            </EditText>-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_product_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/et_margin_start"
+                android:layout_marginEnd="@dimen/et_margin_start"
+                android:layout_marginTop="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/price"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/rupee_icon_style"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_product_name">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/product_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+<!--            <EditText-->
+<!--                android:id="@+id/product_price"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:inputType="number"-->
+<!--                android:layout_marginStart="@dimen/et_margin_start"-->
+<!--                android:layout_marginEnd="@dimen/et_margin_start"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:hint="@string/price"-->
+<!--                android:background="@drawable/et_style"-->
+<!--                android:padding="@dimen/et_padding"-->
+<!--                android:drawableStart="@drawable/rupee_icon_style"-->
+<!--                android:drawablePadding="10dp"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/til_product_name"-->
+<!--                >-->
+<!--            </EditText>-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_product_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/et_margin_start"
+                android:layout_marginEnd="@dimen/et_margin_start"
+                android:layout_marginTop="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/quantity"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/number_icon_style"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_product_price">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/product_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+<!--            <EditText-->
+<!--                android:id="@+id/product_quantity"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:inputType="number"-->
+<!--                android:layout_marginStart="@dimen/et_margin_start"-->
+<!--                android:layout_marginEnd="@dimen/et_margin_start"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:hint="@string/quantity"-->
+<!--                android:background="@drawable/et_style"-->
+<!--                android:padding="@dimen/et_padding"-->
+<!--                android:drawableStart="@drawable/number_icon_style"-->
+<!--                android:drawablePadding="10dp"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/til_product_price"-->
+<!--                >-->
+<!--            </EditText>-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_product_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/et_margin_start"
+                android:layout_marginEnd="@dimen/et_margin_start"
+                android:layout_marginTop="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="@string/product_details"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/ic_baseline_description_24"
+                app:counterEnabled="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_product_quantity">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/product_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+<!--            <EditText-->
+<!--                android:id="@+id/product_details"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/et_margin_start"-->
+<!--                android:layout_marginEnd="@dimen/et_margin_start"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:hint="@string/product_details"-->
+<!--                android:padding="@dimen/et_padding"-->
+<!--                android:minHeight="100dp"-->
+<!--                app:layout_constraintLeft_toLeftOf="parent"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/til_product_quantity"-->
+<!--                >-->
+<!--            </EditText>-->
             <Button
                 android:id="@+id/btn_upload_product"
                 android:layout_width="match_parent"
@@ -140,18 +223,16 @@
                 android:layout_marginTop="30dp"
                 android:text="@string/upload"
                 android:textSize="@dimen/btn_text_size"
-                android:textColor="@color/white"
                 android:paddingBottom="@dimen/btn_padd_bottom"
                 android:paddingTop="@dimen/btn_padd_top"
                 android:gravity="center"
                 android:layout_marginStart="@dimen/btn_margin_start"
                 android:layout_marginEnd="@dimen/btn_margin_end"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/cyan"
-                android:background="@drawable/et_style"
+                style="@style/Widget.MaterialComponents.Button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/product_details"
+                app:layout_constraintTop_toBottomOf="@+id/til_product_details"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>

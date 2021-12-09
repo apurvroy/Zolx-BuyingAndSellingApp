@@ -3,7 +3,6 @@ package com.example.zolx.ui.activities
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -137,66 +136,76 @@ class AddProductActivity : AppCompatActivity() {
     }
 
     private fun checkProductDetails():Boolean{
+        var flag=true
         val price=binding.productPrice.text.toString().toIntOrNull()
         val quantity=binding.productQuantity.text.toString().toIntOrNull()
         if(mSelectedImageUri==null) {
             Toast.makeText(this, "Please upload the product image", Toast.LENGTH_LONG).show()
-            return false
+            flag=false
         }
-        else if(binding.productName.text.toString().trim().isEmpty()){
+        if(binding.productName.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the product name", Toast.LENGTH_LONG).show()
-            binding.productName.error="Enter the product name"
-            binding.productName.requestFocus()
-            return false
+            binding.tilProductName.error="Enter the product name"
+//            binding.productName.requestFocus()
+            flag= false
+        }else{
+            binding.tilProductName.error=null
         }
-        else if(binding.productPrice.text.toString().trim().isEmpty()){
+        if(binding.productPrice.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the product price", Toast.LENGTH_LONG).show()
-            binding.productPrice.error="Enter the product price"
-            binding.productPrice.requestFocus()
-            return false
+            binding.tilProductPrice.error="Enter the product price"
+//            binding.productPrice.requestFocus()
+            flag=false
         }
         else if(price==null){
 //            Toast.makeText(this, "Enter the valid product price(Only Digits)", Toast.LENGTH_LONG).show()
-            binding.productPrice.error="Enter the valid product price(Only Digits)"
-            binding.productPrice.requestFocus()
-            return false
+            binding.tilProductPrice.error="Enter the valid product price(Only Digits)"
+//            binding.productPrice.requestFocus()
+            flag= false
         }
         else if(price<0){
 //            Toast.makeText(this,"Price can not be negative",Toast.LENGTH_LONG).show()
-            binding.productPrice.error="Price can not be negative"
-            binding.productPrice.requestFocus()
-            return false
+            binding.tilProductPrice.error="Price can not be negative"
+//            binding.productPrice.requestFocus()
+            flag= false
+        }else{
+            binding.tilProductPrice.error=null
         }
-        else if(binding.productQuantity.text.toString().trim().isEmpty()){
+        if(binding.productQuantity.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the quantity", Toast.LENGTH_LONG).show()
-            binding.productQuantity.error="Enter the quantity"
-            binding.productQuantity.requestFocus()
-            return false
+            binding.tilProductQuantity.error="Enter the quantity"
+//            binding.productQuantity.requestFocus()
+            flag= false
         }
         else if(quantity==null){
 //            Toast.makeText(this, "Enter the valid product quantity(Only Digits)", Toast.LENGTH_LONG).show()
-            binding.productQuantity.error="Enter the valid product quantity(Only Digits)"
-            binding.productQuantity.requestFocus()
-            return false
+            binding.tilProductQuantity.error="Enter the valid product quantity(Only Digits)"
+//            binding.productQuantity.requestFocus()
+            flag= false
         }
         else if(quantity<0){
 //            Toast.makeText(this,"Product Quantity can not be negative",Toast.LENGTH_LONG).show()
-            binding.productQuantity.error="Product Quantity can not be negative"
-            binding.productQuantity.requestFocus()
-            return false
+            binding.tilProductQuantity.error="Product Quantity can not be negative"
+//            binding.productQuantity.requestFocus()
+            flag= false
+        }else{
+            binding.tilProductQuantity.error=null
         }
-        else if(binding.productDetails.text.toString().trim().isEmpty()){
+        if(binding.productDetails.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the product details", Toast.LENGTH_LONG).show()
-            binding.productDetails.error="Enter the product details"
-            binding.productDetails.requestFocus()
-            return false
+            binding.tilProductDetails.error="Enter the product details"
+//            binding.productDetails.requestFocus()
+            flag=false
+        }else{
+            binding.tilProductDetails.error=null
         }
 
-        return true
+        return flag
 
     }
 
     private fun checkProductDetailsToEdit(): Boolean {
+        var flag=true
         val price=binding.productPrice.text.toString().toIntOrNull()
         val quantity=binding.productQuantity.text.toString().toIntOrNull()
 //        if(mSelectedImageUri==null) {
@@ -205,54 +214,112 @@ class AddProductActivity : AppCompatActivity() {
 //        }
         if(binding.productName.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the product name", Toast.LENGTH_LONG).show()
-            binding.productName.error="Enter the product name"
-            binding.productName.requestFocus()
-            return false
+            binding.tilProductName.error="Enter the product name"
+//            binding.productName.requestFocus()
+            flag= false
+        }else{
+            binding.tilProductName.error=null
         }
-        else if(binding.productPrice.text.toString().trim().isEmpty()){
+        if(binding.productPrice.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the product price", Toast.LENGTH_LONG).show()
-            binding.productPrice.error="Enter the product price"
-            binding.productPrice.requestFocus()
-            return false
+            binding.tilProductPrice.error="Enter the product price"
+//            binding.productPrice.requestFocus()
+            flag=false
         }
         else if(price==null){
 //            Toast.makeText(this, "Enter the valid product price(Only Digits)", Toast.LENGTH_LONG).show()
-            binding.productPrice.error="Enter the valid product price(Only Digits)"
-            binding.productPrice.requestFocus()
-            return false
+            binding.tilProductPrice.error="Enter the valid product price(Only Digits)"
+//            binding.productPrice.requestFocus()
+            flag= false
         }
         else if(price<0){
 //            Toast.makeText(this,"Price can not be negative",Toast.LENGTH_LONG).show()
-            binding.productPrice.error="Price can not be negative"
-            binding.productPrice.requestFocus()
-            return false
+            binding.tilProductPrice.error="Price can not be negative"
+//            binding.productPrice.requestFocus()
+            flag= false
+        }else{
+            binding.tilProductPrice.error=null
         }
-        else if(binding.productQuantity.text.toString().trim().isEmpty()){
+        if(binding.productQuantity.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the quantity", Toast.LENGTH_LONG).show()
-            binding.productQuantity.error="Enter the quantity"
-            binding.productQuantity.requestFocus()
-            return false
+            binding.tilProductQuantity.error="Enter the quantity"
+//            binding.productQuantity.requestFocus()
+            flag= false
         }
         else if(quantity==null){
 //            Toast.makeText(this, "Enter the valid product quantity(Only Digits)", Toast.LENGTH_LONG).show()
-            binding.productQuantity.error="Enter the valid product quantity(Only Digits)"
-            binding.productQuantity.requestFocus()
-            return false
+            binding.tilProductQuantity.error="Enter the valid product quantity(Only Digits)"
+//            binding.productQuantity.requestFocus()
+            flag= false
         }
         else if(quantity<0){
 //            Toast.makeText(this,"Product Quantity can not be negative",Toast.LENGTH_LONG).show()
-            binding.productQuantity.error="Product Quantity can not be negative"
-            binding.productQuantity.requestFocus()
-            return false
+            binding.tilProductQuantity.error="Product Quantity can not be negative"
+//            binding.productQuantity.requestFocus()
+            flag= false
+        }else{
+            binding.tilProductQuantity.error=null
         }
-        else if(binding.productDetails.text.toString().trim().isEmpty()){
+        if(binding.productDetails.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the product details", Toast.LENGTH_LONG).show()
-            binding.productDetails.error="Enter the product details"
-            binding.productDetails.requestFocus()
-            return false
+            binding.tilProductDetails.error="Enter the product details"
+//            binding.productDetails.requestFocus()
+            flag=false
+        }else{
+            binding.tilProductDetails.error=null
         }
 
-        return true
+        return flag
+//        if(binding.productName.text.toString().trim().isEmpty()){
+////            Toast.makeText(this, "Enter the product name", Toast.LENGTH_LONG).show()
+//            binding.productName.error="Enter the product name"
+//            binding.productName.requestFocus()
+//            return false
+//        }
+//        else if(binding.productPrice.text.toString().trim().isEmpty()){
+////            Toast.makeText(this, "Enter the product price", Toast.LENGTH_LONG).show()
+//            binding.productPrice.error="Enter the product price"
+//            binding.productPrice.requestFocus()
+//            return false
+//        }
+//        else if(price==null){
+////            Toast.makeText(this, "Enter the valid product price(Only Digits)", Toast.LENGTH_LONG).show()
+//            binding.productPrice.error="Enter the valid product price(Only Digits)"
+//            binding.productPrice.requestFocus()
+//            return false
+//        }
+//        else if(price<0){
+////            Toast.makeText(this,"Price can not be negative",Toast.LENGTH_LONG).show()
+//            binding.productPrice.error="Price can not be negative"
+//            binding.productPrice.requestFocus()
+//            return false
+//        }
+//        else if(binding.productQuantity.text.toString().trim().isEmpty()){
+////            Toast.makeText(this, "Enter the quantity", Toast.LENGTH_LONG).show()
+//            binding.productQuantity.error="Enter the quantity"
+//            binding.productQuantity.requestFocus()
+//            return false
+//        }
+//        else if(quantity==null){
+////            Toast.makeText(this, "Enter the valid product quantity(Only Digits)", Toast.LENGTH_LONG).show()
+//            binding.productQuantity.error="Enter the valid product quantity(Only Digits)"
+//            binding.productQuantity.requestFocus()
+//            return false
+//        }
+//        else if(quantity<0){
+////            Toast.makeText(this,"Product Quantity can not be negative",Toast.LENGTH_LONG).show()
+//            binding.productQuantity.error="Product Quantity can not be negative"
+//            binding.productQuantity.requestFocus()
+//            return false
+//        }
+//        else if(binding.productDetails.text.toString().trim().isEmpty()){
+////            Toast.makeText(this, "Enter the product details", Toast.LENGTH_LONG).show()
+//            binding.productDetails.error="Enter the product details"
+//            binding.productDetails.requestFocus()
+//            return false
+//        }
+
+//        return true
     }
 
     fun imageUploadDone(imageUrl:String){
