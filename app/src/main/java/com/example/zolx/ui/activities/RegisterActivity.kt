@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.zolx.databinding.ActivityRegisterBinding
 import com.example.zolx.firestore.FirestoreClass
 import com.example.zolx.models.User
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -137,7 +138,8 @@ class RegisterActivity : AppCompatActivity() {
 
                     }else{
 //                      Log.e("firebase",task.exception!!.message.toString())
-                        Toast.makeText(this,task.exception!!.message.toString(),Toast.LENGTH_LONG).show()
+                        Snackbar.make(binding.btnRegister,task.exception!!.message.toString(),Snackbar.LENGTH_LONG).show()
+//                        Toast.makeText(this,task.exception!!.message.toString(),Toast.LENGTH_LONG).show()
                     }
                 }
         }
@@ -145,7 +147,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
     fun registrationSuccess(){
-
+//        Snackbar.make(findViewById(R.id.btn_login),"successfully Registered!!",Snackbar.LENGTH_LONG).show()
         Toast.makeText(this,"successfully Registered!!",Toast.LENGTH_LONG).show()
     }
 

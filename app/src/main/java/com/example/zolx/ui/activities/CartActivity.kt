@@ -15,6 +15,7 @@ import com.example.zolx.models.Cart
 import com.example.zolx.models.Order
 import com.example.zolx.models.Product
 import com.example.zolx.ui.adapters.CartItemsAdapter
+import com.google.android.material.snackbar.Snackbar
 import java.text.DateFormat
 
 class CartActivity : AppCompatActivity() {
@@ -114,7 +115,8 @@ class CartActivity : AppCompatActivity() {
         getCartItems()
     }
     fun cartItemRemoveDone(){
-        Toast.makeText(this,"item is removed from your cart!",Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.noItemsFound,"item is removed from your cart!",Snackbar.LENGTH_LONG).show()
+//        Toast.makeText(this,"item is removed from your cart!",Toast.LENGTH_SHORT).show()
         getCartItems()
     }
 

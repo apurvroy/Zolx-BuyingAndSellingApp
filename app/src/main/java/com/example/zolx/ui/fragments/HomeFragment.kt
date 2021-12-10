@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.zolx.R
@@ -79,12 +78,17 @@ class HomeFragment : Fragment(), IHomeProductsAdapter {
                         }
                     }
                     if(mTempProductList.isEmpty()){
-                        Toast.makeText(activity,"No items Found!",Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(activity,"No items Found!",Toast.LENGTH_SHORT).show()
+                        binding.textHome.text="No items Found \"$searchText\""
+                        binding.textHome.visibility=View.VISIBLE
+                    }else{
+                        binding.textHome.visibility=View.GONE
                     }
 
                     binding.rvHomeItems.adapter?.notifyDataSetChanged()
                 }
                 else{
+                    binding.textHome.visibility=View.GONE
                     mTempProductList.clear()
                     mTempProductList.addAll(mProductList)
                     binding.rvHomeItems.adapter?.notifyDataSetChanged()
@@ -122,6 +126,8 @@ class HomeFragment : Fragment(), IHomeProductsAdapter {
     }
 
     fun productListDone(productsList:ArrayList<Product>){
+        mProductList.clear()
+        mTempProductList.clear()
         mProductList.addAll(productsList)
         mTempProductList.addAll(productsList)
         if(mProductList.size>0){

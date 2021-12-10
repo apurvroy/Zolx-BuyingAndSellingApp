@@ -14,6 +14,7 @@ import com.example.zolx.databinding.ActivityAddProductBinding
 import com.example.zolx.firestore.FirestoreClass
 import com.example.zolx.models.Product
 import com.example.zolx.models.User
+import com.google.android.material.snackbar.Snackbar
 
 class AddProductActivity : AppCompatActivity() {
     private lateinit var binding:ActivityAddProductBinding
@@ -116,8 +117,9 @@ class AddProductActivity : AppCompatActivity() {
                     // At the same time, respect the user's decision. Don't link to
                     // system settings in an effort to convince the user to change
                     // their decision.
-                    Toast.makeText(this,"You denied the permission,Now you can't upload your product photo,You can still provide permission from settings",
-                        Toast.LENGTH_LONG).show()
+                    Snackbar.make(binding.btnUploadProduct,"You denied the permission,You can still provide permission from settings",Snackbar.LENGTH_LONG).show()
+//                    Toast.makeText(this,"You denied the permission,Now you can't upload your product photo,You can still provide permission from settings",
+//                        Toast.LENGTH_LONG).show()
                 }
                 return
             }
@@ -140,7 +142,8 @@ class AddProductActivity : AppCompatActivity() {
         val price=binding.productPrice.text.toString().toIntOrNull()
         val quantity=binding.productQuantity.text.toString().toIntOrNull()
         if(mSelectedImageUri==null) {
-            Toast.makeText(this, "Please upload the product image", Toast.LENGTH_LONG).show()
+            Snackbar.make(binding.btnUploadProduct,"Please upload the product image",Snackbar.LENGTH_LONG).show()
+//            Toast.makeText(this, "Please upload the product image", Toast.LENGTH_LONG).show()
             flag=false
         }
         if(binding.productName.text.toString().trim().isEmpty()){

@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.zolx.R
 import com.example.zolx.firestore.FirestoreClass
 import com.example.zolx.models.Cart
+import com.google.android.material.snackbar.Snackbar
 
 data class CartItemsAdapter(private val context: Context, private val items:ArrayList<Cart>):RecyclerView.Adapter<CartItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemViewHolder {
@@ -47,9 +47,11 @@ data class CartItemsAdapter(private val context: Context, private val items:Arra
                 itemHashMap["checkout_quantity"]=(checkoutQuantity+1).toString()
                 FirestoreClass().updateMyCart(context,currentItem.cart_id,itemHashMap)
             }else if(checkoutQuantity==5){
-                Toast.makeText(context,"You can only buy up to 5 unit(s) of this product",Toast.LENGTH_LONG).show()
+                Snackbar.make(holder.itemView,"You can only buy up to 5 unit(s) of this product",Snackbar.LENGTH_LONG).show()
+//                Toast.makeText(context,"You can only buy up to 5 unit(s) of this product",Toast.LENGTH_LONG).show()
             } else{
-                Toast.makeText(context,"Currently we only have $checkoutQuantity ${currentItem.title}s in the stocks",Toast.LENGTH_LONG).show()
+                Snackbar.make(holder.itemView,"Currently we only have $checkoutQuantity ${currentItem.title}s in the stocks",Snackbar.LENGTH_LONG).show()
+//                Toast.makeText(context,"Currently we only have $checkoutQuantity ${currentItem.title}s in the stocks",Toast.LENGTH_LONG).show()
             }
         }
         holder.removeItem.setOnClickListener {

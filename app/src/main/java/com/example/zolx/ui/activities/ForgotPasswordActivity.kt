@@ -1,9 +1,9 @@
 package com.example.zolx.ui.activities
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zolx.databinding.ActivityForgotPasswordBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 class ForgotPasswordActivity : AppCompatActivity() {
@@ -37,11 +37,15 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 .addOnCompleteListener { task->
                     if(task.isSuccessful){
 
-                        Toast.makeText(this,"Email sent successfully to reset your password!",Toast.LENGTH_LONG).show()
-                        finish()
+                        Snackbar.make(binding.btnSubmit,"Email sent successfully to reset your password!",Snackbar.LENGTH_LONG).show()
+                        binding.fpEmail.text?.clear()
+                        binding.tilFpEmail.error=null
+//                        Toast.makeText(this,"Email sent successfully to reset your password!",Toast.LENGTH_LONG).show()
+//                        finish()
 
                     }else{
-                        Toast.makeText(this,task.exception!!.message.toString(),Toast.LENGTH_LONG).show()
+//                        Toast.makeText(this,task.exception!!.message.toString(),Toast.LENGTH_LONG).show()
+                        Snackbar.make(binding.btnSubmit,task.exception!!.message.toString(),Snackbar.LENGTH_LONG).show()
                     }
                 }
         }

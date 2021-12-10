@@ -3,7 +3,6 @@ package com.example.zolx.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -12,6 +11,7 @@ import com.example.zolx.databinding.ActivityProductDetailsBinding
 import com.example.zolx.firestore.FirestoreClass
 import com.example.zolx.models.Cart
 import com.example.zolx.models.Product
+import com.google.android.material.snackbar.Snackbar
 
 class ProductDetailsActivity : AppCompatActivity() {
     private lateinit var binding:ActivityProductDetailsBinding
@@ -39,7 +39,8 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         binding.btnAddToCart.setOnClickListener {
             if(mProductDetails.quantity.toInt()==0){
-                Toast.makeText(this,"Currently the product is out of stock!",Toast.LENGTH_LONG).show()
+                Snackbar.make(binding.btnAddToCart,"Currently the product is out of stock!",Snackbar.LENGTH_SHORT).show()
+//                Toast.makeText(this,"Currently the product is out of stock!",Toast.LENGTH_LONG).show()
             }else{
                 addToCart()
             }
@@ -90,7 +91,8 @@ class ProductDetailsActivity : AppCompatActivity() {
     fun addToCartDone(){
         binding.btnAddToCart.visibility=View.GONE
         binding.btnGoToCart.visibility=View.VISIBLE
-        Toast.makeText(this,"added to the cart",Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.btnAddToCart,"added to the cart",Snackbar.LENGTH_LONG).show()
+//        Toast.makeText(this,"added to the cart",Toast.LENGTH_SHORT).show()
     }
     fun productAlreadyInCart(){
         binding.btnAddToCart.visibility=View.GONE

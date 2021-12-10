@@ -381,7 +381,7 @@ class FirestoreClass {
                 order_id = order.title
             )
             val docRef=mFirestore.collection("sold_products")
-                .document(cartItem.product_id)
+                .document()
 
             writeBatch.set(docRef,soldProduct, SetOptions.merge())
         }

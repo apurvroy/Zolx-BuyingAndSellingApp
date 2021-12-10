@@ -176,14 +176,12 @@
             android:layout_marginTop="30dp"
             android:text="@string/place_order"
             android:textSize="@dimen/btn_text_size"
-            android:textColor="@color/white"
             android:paddingBottom="@dimen/btn_padd_bottom"
             android:paddingTop="@dimen/btn_padd_top"
             android:gravity="center"
             android:layout_marginStart="@dimen/btn_margin_start"
             android:layout_marginEnd="@dimen/btn_margin_end"
-            android:backgroundTint="@color/cyan"
-            android:background="@drawable/et_style"
+            style="@style/Widget.MaterialComponents.Button"
             >
         </Button>
     </LinearLayout>

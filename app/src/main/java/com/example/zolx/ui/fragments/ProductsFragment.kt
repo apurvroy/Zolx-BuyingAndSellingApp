@@ -1,11 +1,9 @@
 package com.example.zolx.ui.fragments
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zolx.R
@@ -16,6 +14,8 @@ import com.example.zolx.ui.activities.AddProductActivity
 import com.example.zolx.ui.activities.ProductDetailsActivity
 import com.example.zolx.ui.adapters.IMyProductsAdapter
 import com.example.zolx.ui.adapters.MyProductsAdapter
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 
 class ProductsFragment : Fragment(), IMyProductsAdapter {
 
@@ -79,12 +79,18 @@ class ProductsFragment : Fragment(), IMyProductsAdapter {
                         }
                     }
                     if(mTempProductList.isEmpty()){
-                        Toast.makeText(activity,"No items Found!",Toast.LENGTH_SHORT).show()
+//                        Snackbar.make(binding.noProductsFound,"No items Found!",Snackbar.LENGTH_SHORT).show()
+//                        Toast.makeText(activity,"No items Found!",Toast.LENGTH_SHORT).show()
+                        binding.noProductsFound.text="No items Found \"$searchText\""
+                        binding.noProductsFound.visibility=View.VISIBLE
+                    }else{
+                        binding.noProductsFound.visibility=View.GONE
                     }
 
                     binding.rvMyProductItems.adapter?.notifyDataSetChanged()
                 }
                 else{
+                    binding.noProductsFound.visibility=View.GONE
                     mTempProductList.clear()
                     mTempProductList.addAll(mProductList)
                     binding.rvMyProductItems.adapter?.notifyDataSetChanged()
@@ -143,25 +149,45 @@ class ProductsFragment : Fragment(), IMyProductsAdapter {
     }
 
     override fun deleteProduct(productID: String) {
-        val builder = AlertDialog.Builder(requireActivity())
-        builder.setMessage("Are you sure you want to Delete?")
-            .setCancelable(false)
-            .setPositiveButton("Yes") { dialog, id ->
-                //call to delete the product
-                FirestoreClass().deleteProduct(this,productID)
-            }
-            .setNegativeButton("No") { dialog, id ->
-                // Dismiss the dialog
-                dialog.dismiss()
-            }
-        val alert = builder.create()
-        alert.show()
+        context?.let {
+            MaterialAlertDialogBuilder(it)
+                .setCancelable(false)
+                .setTitle("Delete?")
+                .setMessage("Are you sure you want to Delete this product?")
+                .setNeutralButton("Cancel") { dialog, which ->
+                    // Respond to neutral button press
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, which ->
+                    // Respond to negative button press
+                    dialog.dismiss()
+                }
+                .setPositiveButton("Yes") { dialog, which ->
+                    // Respond to positive button press
+                    FirestoreClass().deleteProduct(this,productID)
+                }
+                .show()
+        }
+//        val builder = AlertDialog.Builder(requireActivity())
+//        builder.setMessage("Are you sure you want to Delete?")
+//            .setCancelable(false)
+//            .setPositiveButton("Yes") { dialog, id ->
+//                //call to delete the product
+//                FirestoreClass().deleteProduct(this,productID)
+//            }
+//            .setNegativeButton("No") { dialog, id ->
+//                // Dismiss the dialog
+//                dialog.dismiss()
+//            }
+//        val alert = builder.create()
+//        alert.show()
 //        Toast.makeText(requireActivity(),"$productID",Toast.LENGTH_SHORT).show()
     }
 
 
     fun productDeleteDone(){
-        Toast.makeText(requireActivity(),"Product Deleted!",Toast.LENGTH_SHORT).show()
+        Snackbar.make(binding.noProductsFound,"Product Deleted!",Snackbar.LENGTH_LONG).show()
+//        Toast.makeText(requireActivity(),"Product Deleted!",Toast.LENGTH_SHORT).show()
         getProductListFromFirestore()
     }
 

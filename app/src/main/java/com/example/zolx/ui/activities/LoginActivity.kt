@@ -2,11 +2,11 @@ package com.example.zolx.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zolx.databinding.ActivityLoginBinding
 import com.example.zolx.firestore.FirestoreClass
 import com.example.zolx.models.User
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun userLoggedIn(user:User){
 
-        Toast.makeText(this,"Logged in Successfully!", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this,"Logged in Successfully!", Toast.LENGTH_SHORT).show()
         //user details
 //        Log.i("first name",user.firstName)
 //        Log.i("Last name",user.lastName)
@@ -92,7 +92,8 @@ class LoginActivity : AppCompatActivity() {
                         FirestoreClass().getUserDetails(this)
 
                     }else{
-                        Toast.makeText(this,task.exception!!.message.toString(),Toast.LENGTH_LONG).show()
+                        Snackbar.make(binding.btnLogin,task.exception!!.message.toString(),Snackbar.LENGTH_LONG).show()
+//                        Toast.makeText(this,task.exception!!.message.toString(),Toast.LENGTH_LONG).show()
                     }
 
 
