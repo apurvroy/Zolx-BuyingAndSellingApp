@@ -3,6 +3,8 @@ package com.example.zolx.ui.activities
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -65,7 +67,7 @@ class AddProductActivity : AppCompatActivity() {
         }
 
         binding.btnUploadProduct.setOnClickListener{
-
+            startProgressIndicator()
 
             //while editing the product
             if(editProduct && checkProductDetailsToEdit()){
@@ -84,6 +86,9 @@ class AddProductActivity : AppCompatActivity() {
             else if(!editProduct && checkProductDetails()){
 //                Toast.makeText(this, "Your product is uploaded", Toast.LENGTH_LONG).show()
                 FirestoreClass().uploadImageToCloudStorage(this,mSelectedImageUri!!,PRODUCT_IMAGE)
+            }
+            else{
+                stopProgressIndicator()
             }
         }
 
@@ -354,6 +359,7 @@ class AddProductActivity : AppCompatActivity() {
     }
 
     fun productUploadDone(){
+        stopProgressIndicator()
         Toast.makeText(this,"your product is uploaded successfully",Toast.LENGTH_SHORT).show()
 //        val intent= Intent(this,DashboardActivity::class.java)
 //        intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -404,7 +410,18 @@ class AddProductActivity : AppCompatActivity() {
     }
 
     fun productUpdateDone(){
+        stopProgressIndicator()
         Toast.makeText(this,"your product is updated successfully",Toast.LENGTH_SHORT).show()
         finish()
+    }
+    fun startProgressIndicator(){
+        binding.addProductCpi.visibility= View.VISIBLE
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+    fun stopProgressIndicator(){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        binding.addProductCpi.visibility=View.GONE
     }
 }

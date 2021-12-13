@@ -135,7 +135,7 @@ class FirestoreClass {
 
                     }
                     is AddProductActivity->{
-
+                        activity.stopProgressIndicator()
                     }
                 }
                 Log.e(activity.javaClass.simpleName, e.message, e)
@@ -479,6 +479,7 @@ class FirestoreClass {
                 activity.productUpdateDone()
             }
             .addOnFailureListener { e->
+                activity.stopProgressIndicator()
                 Log.e("firestore","Error while updaing the product details",e)
             }
     }

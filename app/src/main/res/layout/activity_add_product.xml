@@ -68,7 +68,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:layout_margin="2dp"
                         android:backgroundTint="@color/cyan"
                         app:tint="@color/white"
                         android:src="@drawable/ic_baseline_add_a_photo_24"
@@ -255,4 +254,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/add_product_cpi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        >
+    </com.google.android.material.progressindicator.CircularProgressIndicator>
 </androidx.constraintlayout.widget.ConstraintLayout>
