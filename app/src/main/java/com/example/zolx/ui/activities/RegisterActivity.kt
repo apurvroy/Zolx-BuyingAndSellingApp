@@ -1,7 +1,8 @@
 package com.example.zolx.ui.activities
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zolx.databinding.ActivityRegisterBinding
 import com.example.zolx.firestore.FirestoreClass
@@ -109,8 +110,8 @@ class RegisterActivity : AppCompatActivity() {
     //creating a new user in the database
     private fun registerUser(){
         //validation
+        startProgressIndicator()
         if(checkRegisterDetails()){
-
 
             val email:String=binding.emailRegister.text.toString().trim()
             val password:String=binding.passwordRegister.text.toString().trim()
@@ -137,18 +138,32 @@ class RegisterActivity : AppCompatActivity() {
                         finish()
 
                     }else{
+                        stopProgressIndicator()
 //                      Log.e("firebase",task.exception!!.message.toString())
                         Snackbar.make(binding.btnRegister,task.exception!!.message.toString(),Snackbar.LENGTH_LONG).show()
 //                        Toast.makeText(this,task.exception!!.message.toString(),Toast.LENGTH_LONG).show()
                     }
                 }
+        }else{
+            stopProgressIndicator()
         }
     }
 
 
     fun registrationSuccess(){
-//        Snackbar.make(findViewById(R.id.btn_login),"successfully Registered!!",Snackbar.LENGTH_LONG).show()
-        Toast.makeText(this,"successfully Registered!!",Toast.LENGTH_LONG).show()
+//        Snackbar.make(binding.btnRegister,"successfully Registered!!",Snackbar.LENGTH_LONG).show()
+//        Toast.makeText(this,"successfully Registered!!",Toast.LENGTH_LONG).show()
+        stopProgressIndicator()
+    }
+    fun startProgressIndicator(){
+        binding.registerCpi.visibility= View.VISIBLE
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+    fun stopProgressIndicator(){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        binding.registerCpi.visibility= View.GONE
     }
 
 }

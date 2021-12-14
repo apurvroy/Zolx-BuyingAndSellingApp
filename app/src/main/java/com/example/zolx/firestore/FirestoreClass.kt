@@ -34,6 +34,7 @@ class FirestoreClass {
                 activity.registrationSuccess()
             }
             .addOnFailureListener { e ->
+                activity.stopProgressIndicator()
                 Log.e("firestore", "Error while registering the user", e)
             }
     }
