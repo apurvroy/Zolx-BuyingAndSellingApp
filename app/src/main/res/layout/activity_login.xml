@@ -161,7 +161,6 @@
         android:layout_marginTop="30dp"
         android:text="@string/btn_sign_in"
         android:textSize="@dimen/btn_text_size"
-        android:textColor="@color/white"
         android:paddingBottom="@dimen/btn_padd_bottom"
         android:paddingTop="@dimen/btn_padd_top"
         android:gravity="center"
@@ -182,7 +181,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/don_t_have_an_account"
-            android:textColor="@color/icon_grey"
             android:textSize="@dimen/clickable_text_size"
             android:padding="@dimen/clickable_padding"
             >

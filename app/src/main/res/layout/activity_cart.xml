@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        android:background="@color/white"
+        style="@style/rvBackgroundColor"
         android:visibility="gone"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
@@ -80,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/price"
-                android:textColor="@color/black"
                 android:textSize="15sp" />
             <TextView
                 android:id="@+id/price"
@@ -100,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/delivery_charges"
-                android:textColor="@color/black"
                 android:textSize="15sp"/>
             <TextView
                 android:id="@+id/delivery_charges"
@@ -126,7 +124,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/total_amount"
-                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
             <TextView
@@ -135,7 +132,6 @@
                 android:layout_height="wrap_content"
                 tools:text="\u20B9 1039"
                 android:textStyle="bold"
-                android:textColor="@color/black"
                 android:textAlignment="center"
                 android:textSize="15sp"/>
         </LinearLayout>
@@ -155,7 +151,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/payment_mode"
-                android:textColor="@color/black"
                 android:textSize="15sp"
                 />
             <TextView

@@ -11,7 +11,7 @@
     android:layout_marginStart="20dp"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="5dp"
-    android:background="@drawable/rv_items_style">
+    style="@style/rvBackgroundColor">
     <LinearLayout
         android:id="@+id/item_image"
         android:layout_width="100dp"
@@ -46,18 +46,14 @@
             android:id="@+id/item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:textStyle="bold"
-            android:backgroundTint="@color/white"
             tools:text="Name"
             />
         <TextView
             android:id="@+id/item_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginTop="5dp"
-            android:backgroundTint="@color/white"
             tools:text="\u20B9 999"
             />
     </LinearLayout>
@@ -74,7 +70,6 @@
             android:id="@+id/btn_delete_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_baseline_delete_24"
             />
@@ -82,7 +77,6 @@
             android:id="@+id/btn_edit_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_baseline_edit_24"
             />

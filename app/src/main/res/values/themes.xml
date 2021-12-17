@@ -48,4 +48,8 @@
     <style name="Toolbar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:background">@color/cyan</item>
     </style>
+    <style name="rvBackgroundColor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:background">@drawable/rv_items_style</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
 </resources>

@@ -11,7 +11,7 @@
     android:layout_marginEnd="20dp"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="5dp"
-    android:background="@drawable/rv_items_style">
+    style="@style/rvBackgroundColor">
     <LinearLayout
         android:id="@+id/cart_item_image"
         android:layout_width="100dp"
@@ -45,7 +45,6 @@
             android:id="@+id/cart_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:textStyle="bold"
             android:backgroundTint="@color/white"
             tools:text="Name"
@@ -54,7 +53,6 @@
             android:id="@+id/cart_item_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginTop="5dp"
             android:backgroundTint="@color/white"
             tools:text="\u20B9 999"
@@ -65,7 +63,6 @@
         android:layout_width="wrap_content"
         android:layout_height="80dp"
         android:padding="10dp"
-        android:background="@color/white"
         android:src="@drawable/ic_baseline_delete_24"
         app:layout_constraintStart_toEndOf="@id/ll_cart_product_details"
         app:layout_constraintEnd_toEndOf="parent"

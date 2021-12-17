@@ -10,7 +10,7 @@
     android:layout_marginEnd="20dp"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="5dp"
-    android:background="@drawable/rv_items_style">
+    style="@style/rvBackgroundColor">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +44,6 @@
                 android:layout_weight="1"
                 android:text="@string/title"
                 android:textStyle="bold"
-                android:textColor="@color/black"
                 android:textAlignment="center"
                 android:textSize="15sp"
                 android:layout_marginStart="5dp"
@@ -62,7 +61,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/order_quantity"
-                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
             <TextView
@@ -71,7 +69,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 tools:text="5"
-                android:textColor="@color/icon_grey"
                 android:textSize="15sp"
                 android:layout_marginStart="5dp"
                 />
@@ -88,7 +85,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/order_date"
-                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
             <TextView
@@ -97,7 +93,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/order_date"
-                android:textColor="@color/icon_grey"
                 android:textSize="15sp"
                 android:layout_marginStart="5dp"
                 />
@@ -114,7 +109,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shipping_address"
-                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
             <TextView
@@ -122,7 +116,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/address"
-                android:textColor="@color/icon_grey"
                 android:textSize="15sp"
                 android:layout_marginStart="5dp"
                 />
@@ -137,7 +130,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/payment_mode"
-                android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 />
@@ -145,7 +137,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cash_on_delivery"
-                android:textColor="@color/icon_grey"
                 android:textAlignment="center"
                 android:textSize="15sp"
                 android:layout_marginStart="5dp"/>
