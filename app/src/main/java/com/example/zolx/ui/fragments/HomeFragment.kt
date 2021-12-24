@@ -2,8 +2,10 @@ package com.example.zolx.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.zolx.R
@@ -27,6 +29,8 @@ class HomeFragment : Fragment(), IHomeProductsAdapter {
     private lateinit var mAdapter:HomeProductsAdapter
     private var mTempProductList=ArrayList<Product>()
     private var mProductList=ArrayList<Product>()
+    private lateinit var textCartItemCount:TextView
+    private var mCartItemCount: Int=0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,6 +103,16 @@ class HomeFragment : Fragment(), IHomeProductsAdapter {
 
         })
 
+        //badge on cart
+        val cartItem=menu.findItem(R.id.cart)
+        val actionView=cartItem.actionView
+        textCartItemCount=actionView.findViewById(R.id.cart_badge)
+        setupBadge()
+
+        actionView.setOnClickListener {
+            onOptionsItemSelected(cartItem)
+        }
+
 
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -149,8 +163,26 @@ class HomeFragment : Fragment(), IHomeProductsAdapter {
         recyclerView.adapter=mAdapter
     }
 
+    fun getCartItemsCountDone(cartItemsCount:Int){
+        Log.d("cart",cartItemsCount.toString())
+        mCartItemCount=cartItemsCount
+        setupBadge()
+
+    }
+    private fun setupBadge(){
+        if(textCartItemCount!=null){
+            if(mCartItemCount==0){
+                textCartItemCount.visibility=View.GONE
+            }else{
+                textCartItemCount.text=mCartItemCount.toString()
+                textCartItemCount.visibility=View.VISIBLE
+            }
+        }
+    }
+
     override fun onResume() {
 //        getProductListFromFirestore()
+        FirestoreClass().getCartItemsCount(this)
         super.onResume()
 
     }

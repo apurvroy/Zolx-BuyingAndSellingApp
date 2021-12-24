@@ -13,6 +13,7 @@
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="@string/cart"
         app:showAsAction="always"
+        app:actionLayout="@layout/action_item_layout"
         />
     <item android:id="@+id/settings"
         android:icon="@drawable/ic_baseline_person_icon"

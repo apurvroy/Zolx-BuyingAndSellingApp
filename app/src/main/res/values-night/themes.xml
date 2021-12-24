@@ -50,7 +50,7 @@
 <!--            <item name="android:statusBarColor">@color/light_cyan</item>-->
 <!--        </style>-->
     <style name="Toolbar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:background">@color/black</item>
+        <item name="android:background">#121212</item>
     </style>
     <style name="rvBackgroundColor" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:background">@drawable/rv_items_style</item>

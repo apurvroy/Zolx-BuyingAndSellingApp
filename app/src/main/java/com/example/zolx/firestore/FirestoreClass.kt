@@ -484,4 +484,20 @@ class FirestoreClass {
                 Log.e("firestore","Error while updaing the product details",e)
             }
     }
+
+    //cart badge
+    fun getCartItemsCount(fragment: HomeFragment){
+        mFirestore.collection("cart_items")
+            .whereEqualTo("user_id",getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document->
+                val totalItemsInCart=document.size()
+                fragment.getCartItemsCountDone(totalItemsInCart)
+
+
+            }
+            .addOnFailureListener {e->
+                Log.e("firestore","Error while getting cart items count",e)
+            }
+    }
 }
