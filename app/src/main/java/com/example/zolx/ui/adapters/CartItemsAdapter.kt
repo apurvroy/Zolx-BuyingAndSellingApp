@@ -43,11 +43,11 @@ data class CartItemsAdapter(private val context: Context, private val items:Arra
         holder.addItem.setOnClickListener {
             val checkoutQuantity=currentItem.checkout_quantity.toInt()
             val itemHashMap=HashMap<String,Any>()
-            if(checkoutQuantity<currentItem.quantity.toInt() && checkoutQuantity<5){
+            if(checkoutQuantity<currentItem.quantity.toInt() && checkoutQuantity<currentItem.max_checkout_quantity.toInt()){
                 itemHashMap["checkout_quantity"]=(checkoutQuantity+1).toString()
                 FirestoreClass().updateMyCart(context,currentItem.cart_id,itemHashMap)
-            }else if(checkoutQuantity==5){
-                Snackbar.make(holder.itemView,"You can only buy up to 5 unit(s) of this product",Snackbar.LENGTH_LONG).show()
+            }else if(checkoutQuantity==currentItem.max_checkout_quantity.toInt()){
+                Snackbar.make(holder.itemView,"You can only buy up to ${currentItem.max_checkout_quantity} unit(s) of this product",Snackbar.LENGTH_LONG).show()
 //                Toast.makeText(context,"You can only buy up to 5 unit(s) of this product",Toast.LENGTH_LONG).show()
             } else{
                 Snackbar.make(holder.itemView,"Currently we only have $checkoutQuantity ${currentItem.title}s in the stocks",Snackbar.LENGTH_LONG).show()

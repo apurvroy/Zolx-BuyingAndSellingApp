@@ -146,6 +146,7 @@ class AddProductActivity : AppCompatActivity() {
         var flag=true
         val price=binding.productPrice.text.toString().toIntOrNull()
         val quantity=binding.productQuantity.text.toString().toIntOrNull()
+        val maxQuantity=binding.productMaxQuantity.text.toString().toIntOrNull()
         if(mSelectedImageUri==null) {
             Snackbar.make(binding.btnUploadProduct,"Please upload the product image",Snackbar.LENGTH_LONG).show()
 //            Toast.makeText(this, "Please upload the product image", Toast.LENGTH_LONG).show()
@@ -199,6 +200,29 @@ class AddProductActivity : AppCompatActivity() {
         }else{
             binding.tilProductQuantity.error=null
         }
+        if(binding.productMaxQuantity.text.toString().trim().isEmpty()){
+//            Toast.makeText(this, "Enter the quantity", Toast.LENGTH_LONG).show()
+            binding.tilMaxQuantityPerOrder.error="Enter the max quantity"
+//            binding.productQuantity.requestFocus()
+            flag= false
+        }
+        else if(maxQuantity==null){
+//            Toast.makeText(this, "Enter the valid product quantity(Only Digits)", Toast.LENGTH_LONG).show()
+            binding.tilMaxQuantityPerOrder.error="Enter the valid max product quantity(Only Digits)"
+//            binding.productQuantity.requestFocus()
+            flag= false
+        }
+        else if(maxQuantity<=0){
+//            Toast.makeText(this,"Product Quantity can not be negative",Toast.LENGTH_LONG).show()
+            binding.tilMaxQuantityPerOrder.error="Max Product Quantity can not be negative and zero"
+//            binding.productQuantity.requestFocus()
+            flag= false
+        }else if(quantity!=null && maxQuantity>quantity){
+            binding.tilMaxQuantityPerOrder.error="max product quantity can not be greater than total quantity"
+            flag= false
+        }else{
+            binding.tilMaxQuantityPerOrder.error=null
+        }
         if(binding.productDetails.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the product details", Toast.LENGTH_LONG).show()
             binding.tilProductDetails.error="Enter the product details"
@@ -216,6 +240,7 @@ class AddProductActivity : AppCompatActivity() {
         var flag=true
         val price=binding.productPrice.text.toString().toIntOrNull()
         val quantity=binding.productQuantity.text.toString().toIntOrNull()
+        val maxQuantity=binding.productMaxQuantity.text.toString().toIntOrNull()
 //        if(mSelectedImageUri==null) {
 //            Toast.makeText(this, "Please upload the product image", Toast.LENGTH_LONG).show()
 //            return false
@@ -267,6 +292,29 @@ class AddProductActivity : AppCompatActivity() {
             flag= false
         }else{
             binding.tilProductQuantity.error=null
+        }
+        if(binding.productMaxQuantity.text.toString().trim().isEmpty()){
+//            Toast.makeText(this, "Enter the quantity", Toast.LENGTH_LONG).show()
+            binding.tilMaxQuantityPerOrder.error="Enter the max quantity"
+//            binding.productQuantity.requestFocus()
+            flag= false
+        }
+        else if(maxQuantity==null){
+//            Toast.makeText(this, "Enter the valid product quantity(Only Digits)", Toast.LENGTH_LONG).show()
+            binding.tilMaxQuantityPerOrder.error="Enter the valid max product quantity(Only Digits)"
+//            binding.productQuantity.requestFocus()
+            flag= false
+        }
+        else if(maxQuantity<=0){
+//            Toast.makeText(this,"Product Quantity can not be negative",Toast.LENGTH_LONG).show()
+            binding.tilMaxQuantityPerOrder.error="Max Product Quantity can not be negative and zero"
+//            binding.productQuantity.requestFocus()
+            flag= false
+        }else if(quantity!=null && maxQuantity>quantity){
+            binding.tilMaxQuantityPerOrder.error="max product quantity can not be greater than total quantity"
+            flag= false
+        }else{
+            binding.tilMaxQuantityPerOrder.error=null
         }
         if(binding.productDetails.text.toString().trim().isEmpty()){
 //            Toast.makeText(this, "Enter the product details", Toast.LENGTH_LONG).show()
@@ -352,7 +400,8 @@ class AddProductActivity : AppCompatActivity() {
             price = binding.productPrice.text.toString().trim(),
             details = binding.productDetails.text.toString().trim(),
             quantity = binding.productQuantity.text.toString().trim(),
-            image = mProductImageUrl
+            image = mProductImageUrl,
+            max_unit_per_order = binding.productMaxQuantity.text.toString().trim()
         )
 
         FirestoreClass().uploadProductDetails(this,product)
@@ -388,6 +437,7 @@ class AddProductActivity : AppCompatActivity() {
         binding.productPrice.setText(mProductDetails.price)
         binding.productDetails.setText(mProductDetails.details)
         binding.productQuantity.setText(mProductDetails.quantity)
+        binding.productMaxQuantity.setText(mProductDetails.max_unit_per_order)
     }
 
     fun updateProduct(){
@@ -396,13 +446,14 @@ class AddProductActivity : AppCompatActivity() {
         val pPrice=binding.productPrice.text.toString().trim()
         val pQuantity=binding.productQuantity.text.toString().trim()
         val pDetails=binding.productDetails.text.toString().trim()
-
+        val pMaxQuantity=binding.productMaxQuantity.text.toString().trim()
 
         productHashMap["image"]=mProductImageUrl
         productHashMap["price"]=pPrice
         productHashMap["title"]=pTitle
         productHashMap["quantity"]=pQuantity
         productHashMap["details"]=pDetails
+        productHashMap["max_unit_per_order"]=pMaxQuantity
 
 
         FirestoreClass().updateProduct(this,productHashMap,mProductId)

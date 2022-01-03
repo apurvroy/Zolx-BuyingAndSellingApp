@@ -198,6 +198,27 @@
 <!--                >-->
 <!--            </EditText>-->
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_max_quantity_per_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/et_margin_start"
+                android:layout_marginEnd="@dimen/et_margin_start"
+                android:layout_marginTop="20dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="Max Quantity Per Order"
+                app:errorEnabled="true"
+                app:startIconDrawable="@drawable/number_icon_style"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_product_quantity">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/product_max_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_product_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -211,7 +232,7 @@
                 app:counterEnabled="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_product_quantity">
+                app:layout_constraintTop_toBottomOf="@id/til_max_quantity_per_order">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/product_details"
                     android:layout_width="match_parent"

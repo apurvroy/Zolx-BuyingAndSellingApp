@@ -2,7 +2,6 @@ package com.example.zolx.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.SearchView
 import android.widget.TextView
@@ -164,13 +163,13 @@ class HomeFragment : Fragment(), IHomeProductsAdapter {
     }
 
     fun getCartItemsCountDone(cartItemsCount:Int){
-        Log.d("cart",cartItemsCount.toString())
+//        Log.d("cart",cartItemsCount.toString())
         mCartItemCount=cartItemsCount
         setupBadge()
 
     }
     private fun setupBadge(){
-        if(textCartItemCount!=null){
+        if(this::textCartItemCount.isInitialized){
             if(mCartItemCount==0){
                 textCartItemCount.visibility=View.GONE
             }else{

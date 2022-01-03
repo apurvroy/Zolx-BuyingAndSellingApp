@@ -13,5 +13,6 @@ data class Cart(
     var checkout_quantity:String="",
     val image:String="",
     val product_id:String="",
+    val max_checkout_quantity: String ="",
     var cart_id:String=""
 ):Parcelable

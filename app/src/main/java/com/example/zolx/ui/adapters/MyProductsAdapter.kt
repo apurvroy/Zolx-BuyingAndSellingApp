@@ -23,6 +23,7 @@ open class MyProductsAdapter(private val context: Context,private var items:Arra
 
         holder.name.text=currentProduct.title
         holder.price.text="\u20B9${currentProduct.price}"
+        holder.quantity.text="#${currentProduct.quantity}"
         Glide.with(context).load(currentProduct.image).into(holder.image)
 
         holder.deleteBtn.setOnClickListener {
@@ -50,6 +51,7 @@ class ProductViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     val image=itemView.findViewById<ImageView>(R.id.product_item_image)
     val name=itemView.findViewById<TextView>(R.id.item_name)
     val price=itemView.findViewById<TextView>(R.id.item_price)
+    val quantity=itemView.findViewById<TextView>(R.id.item_available_quantity)
     val deleteBtn=itemView.findViewById<ImageView>(R.id.btn_delete_product)
     val editBtn=itemView.findViewById<ImageView>(R.id.btn_edit_product)
 }

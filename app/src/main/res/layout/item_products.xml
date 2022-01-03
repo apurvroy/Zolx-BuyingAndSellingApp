@@ -56,6 +56,13 @@
             android:layout_marginTop="5dp"
             tools:text="\u20B9 999"
             />
+        <TextView
+            android:id="@+id/item_available_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:text="#12"
+            />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_btn_editdelete_product"

@@ -12,6 +12,7 @@ data class Product(
     val details:String="",
     val quantity:String="",
     val image:String="",
+    val max_unit_per_order:String="",
     var product_id:String=""
 
 ):Parcelable

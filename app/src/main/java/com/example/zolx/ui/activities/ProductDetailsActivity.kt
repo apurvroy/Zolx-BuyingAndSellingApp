@@ -84,7 +84,8 @@ class ProductDetailsActivity : AppCompatActivity() {
             title = mProductDetails.title,
             price = mProductDetails.price,
             image = mProductDetails.image,
-            checkout_quantity = "1"
+            checkout_quantity = "1",
+            max_checkout_quantity = mProductDetails.max_unit_per_order
         )
         FirestoreClass().addCartItems(this,cartItem)
     }
