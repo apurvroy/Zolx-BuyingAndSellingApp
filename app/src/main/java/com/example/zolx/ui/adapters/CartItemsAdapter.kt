@@ -1,5 +1,6 @@
 package com.example.zolx.ui.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -18,16 +19,18 @@ data class CartItemsAdapter(private val context: Context, private val items:Arra
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartItemViewHolder {
         val view=LayoutInflater.from(context).inflate(R.layout.item_cart,parent,false)
         val viewHolder=CartItemViewHolder(view)
+//        Log.e("item","OnCreateView")
         return viewHolder
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CartItemViewHolder, position: Int) {
         val currentItem=items[position]
         Glide.with(context).load(currentItem.image).into(holder.image)
         holder.name.text=currentItem.title
         holder.price.text="\u20B9 ${currentItem.price}"
         holder.cartQuantity.text=currentItem.checkout_quantity
-
+//        Log.e("item","${currentItem.title} $position  ${currentItem.checkout_quantity}")
         if(holder.cartQuantity.text=="0"){
             holder.removeItem.visibility=View.GONE
             holder.addItem.visibility=View.GONE
@@ -38,14 +41,14 @@ data class CartItemsAdapter(private val context: Context, private val items:Arra
             holder.addItem.visibility=View.VISIBLE
         }
         holder.deleteItem.setOnClickListener {
-            FirestoreClass().removeItemFromCart(context,currentItem.cart_id)
+            FirestoreClass().removeItemFromCart(context,currentItem.cart_id,position)
         }
         holder.addItem.setOnClickListener {
             val checkoutQuantity=currentItem.checkout_quantity.toInt()
             val itemHashMap=HashMap<String,Any>()
             if(checkoutQuantity<currentItem.quantity.toInt() && checkoutQuantity<currentItem.max_checkout_quantity.toInt()){
                 itemHashMap["checkout_quantity"]=(checkoutQuantity+1).toString()
-                FirestoreClass().updateMyCart(context,currentItem.cart_id,itemHashMap)
+                FirestoreClass().updateMyCart(context,currentItem.cart_id,itemHashMap,position)
             }else if(checkoutQuantity==currentItem.max_checkout_quantity.toInt()){
                 Snackbar.make(holder.itemView,"You can only buy up to ${currentItem.max_checkout_quantity} unit(s) of this product",Snackbar.LENGTH_LONG).show()
 //                Toast.makeText(context,"You can only buy up to 5 unit(s) of this product",Toast.LENGTH_LONG).show()
@@ -57,19 +60,20 @@ data class CartItemsAdapter(private val context: Context, private val items:Arra
         holder.removeItem.setOnClickListener {
 
             if(currentItem.checkout_quantity=="1"){
-                FirestoreClass().removeItemFromCart(context,currentItem.cart_id)
+                FirestoreClass().removeItemFromCart(context,currentItem.cart_id,position)
             }else{
                 val checkoutQuantity=currentItem.checkout_quantity.toInt()
                 val itemHashMap=HashMap<String,Any>()
 
                 itemHashMap["checkout_quantity"]=(checkoutQuantity-1).toString()
-                FirestoreClass().updateMyCart(context,currentItem.cart_id,itemHashMap)
+                FirestoreClass().updateMyCart(context,currentItem.cart_id,itemHashMap,position)
             }
         }
 
     }
 
     override fun getItemCount(): Int {
+//        Log.e("item","getItemCount ${items.size}")
         return items.size
     }
 }

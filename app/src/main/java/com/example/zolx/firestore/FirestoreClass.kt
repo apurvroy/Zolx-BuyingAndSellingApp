@@ -294,14 +294,14 @@ class FirestoreClass {
                 Log.e("firestore","Error while getting  products details",e)
             }
     }
-    fun removeItemFromCart(context: Context,cart_id:String){
+    fun removeItemFromCart(context: Context,cart_id:String,position:Int){
         mFirestore.collection("cart_items")
             .document(cart_id)
             .delete()
             .addOnSuccessListener {
                 when(context){
                     is CartActivity->{
-                        context.cartItemRemoveDone()
+                        context.cartItemRemoveDone(position)
                     }
                 }
             }
@@ -309,14 +309,21 @@ class FirestoreClass {
                 Log.e("firestore","Error while deleting  cart items",e)
             }
     }
-    fun updateMyCart(context: Context,cart_id:String,itemHashMap:HashMap<String,Any>){
+    fun updateMyCart(context: Context,cart_id:String,itemHashMap:HashMap<String,Any>,position:Int){
         mFirestore.collection("cart_items")
             .document(cart_id)
             .update(itemHashMap)
             .addOnSuccessListener {
                 when(context){
                     is CartActivity->{
-                        context.cartItemUpdateDone()
+                        mFirestore.collection("cart_items").document(cart_id).get().addOnSuccessListener {
+                            val item: Cart? =it.toObject(Cart::class.java)
+                            context.cartItemUpdateDone(item!!,position)
+                        }
+                            .addOnFailureListener { e->
+                                Log.e("firestore","Error while getting the updated item from cart items",e)
+                            }
+
                     }
                 }
             }
