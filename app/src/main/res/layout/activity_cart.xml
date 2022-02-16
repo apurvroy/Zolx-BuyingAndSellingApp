@@ -41,18 +41,32 @@
         >
 
     </androidx.recyclerview.widget.RecyclerView>
-    <TextView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/no_items_found"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/currently_no_item_in_your_cart"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:lottie_rawRes="@raw/empty_cart"
+        app:lottie_autoPlay="true"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_my_cart"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+    </com.airbnb.lottie.LottieAnimationView>
+<!--    <TextView-->
+<!--        android:id="@+id/no_items_found"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/currently_no_item_in_your_cart"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="20sp"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/toolbar_my_cart"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
     <LinearLayout
         android:id="@+id/ll_checkout"
         android:layout_width="match_parent"

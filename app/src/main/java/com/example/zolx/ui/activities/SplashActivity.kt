@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
                 FirestoreClass().getUserDetails(this)
             }
 
-        }, 2000)
+        }, 4500)
     }
     fun userDetailsDone(user: User){
         if(user.profileCompleted==0){
