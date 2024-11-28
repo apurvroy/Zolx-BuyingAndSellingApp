@@ -12,9 +12,10 @@ Zolx is a Kotlin-based app designed to simplify buying and selling. Whether you'
 - **View Product Details**: Check detailed information about any product on the **Product Details** screen.
 - **Add to Cart**: Save items you like to your **Cart** for easy checkout.
 - **Order History**: View your previously **Ordered Items**.
+- **User Profile**: Manage your **Name**, **Mobile Number**, **Gender**, **Address** and **Profile Photo**.
 
 ### For Sellers:
-- **Upload Products**: List your items for sale using the **Upload Product** screen.
+- **Upload/Update Products**: List your items for sale using the **Upload/Update Product** screen.
 - **Track Sales**: Monitor your transactions on the **Sold Items** list.
 
 ### Additional Features:
@@ -22,6 +23,7 @@ Zolx is a Kotlin-based app designed to simplify buying and selling. Whether you'
 - **Firebase Integration**:
   - Real-time updates ensure that items, orders, and cart changes are reflected instantly.
   - Secure data handling using Firebase Authentication and Firestore.
+- **Authentication**: Users can **Log In** with email and password. A **Forgot Password** screen allows users to recover their account credentials securely.
 
 ---
 
@@ -33,6 +35,7 @@ Zolx is a Kotlin-based app designed to simplify buying and selling. Whether you'
    
 2. **Search Products**:
    - Find specific products using keywords.
+   - Supports filtering and sorting results.
 
 3. **Product Details**:
    - View detailed information about a product, including price, description, and seller information.
@@ -49,3 +52,15 @@ Zolx is a Kotlin-based app designed to simplify buying and selling. Whether you'
 
 7. **Sold Items**:
    - Sellers can keep a record of all items they've successfully sold.
+
+8. **User Profile**:
+   - Users can manage their personal information such as **name**, **mobile number**, **gender**, and **profile photo**.
+
+9. **Login Screen**:
+   - Allows users to log in using their **email and password**.
+
+10. **Forgot Password Screen**:
+    - Enables users to reset their password securely through email.
+
+11. **Splash Screen**:
+    - The app starts with an animated Splash Screen that introduces users to the app's branding before transitioning to the login/dashboard screen.
